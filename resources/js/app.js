@@ -82,6 +82,8 @@ const router = new VueRouter({
 //     render:(h) => h(AppLayout)
 // }).$mount('#app');
 
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 const app = new Vue({
 	el: '#app',
     router,

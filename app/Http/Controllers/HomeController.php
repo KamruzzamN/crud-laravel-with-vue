@@ -21,14 +21,16 @@ class HomeController extends Controller
     }
 
     public function users(){
+        
         if(request()->ajax()){
-            $users = User::orderBy('id', 'DESC')->take(10)->get();
+            $users = User::orderBy('id', 'DESC')->paginate(8);
             return response()->json(['users' => $users], 200);
+        }
+        else{
+            return view('welcome');
         }
         
     }
-
-    
 
     public function userDelete($id){
         User::find($id)->delete();
